@@ -1,10 +1,10 @@
-from .base import BaseClient
-from .move import Move
+from .client import EimerClient
 from .config import ClientConfig
 from .log import log
+from .move import Move
 
 __all__ = [
-    "BaseClient",
+    "EimerClient",
     "Move",
     "ClientConfig",
     "log",

@@ -8,7 +8,7 @@ from eimer_client.move import Move
 from eimer_client.utils import encode_image
 
 
-class BaseClient:
+class EimerClient:
 
     def __init__(
         self,
