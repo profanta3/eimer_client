@@ -1,3 +1,18 @@
+# Installation
+
+Include this package as dependency in your project.
+
+```bash
+uv add git+https://github.com/profanta3/eimer_client
+```
+
+When this code has changed, update your local dependency with:
+
+```bash
+uv sync --upgrade
+```
+
+
 # Notes for the server
 
 ```
