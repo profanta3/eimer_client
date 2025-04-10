@@ -31,9 +31,6 @@ class EimerClient:
 
         self.socket: socket.SocketIO | None = None
 
-        # Register the client to the server
-        self._register()
-
     def send_move(self, move: Move) -> bool:
         """Sends a move as a sequence of bytes over a socket, preserving leading zeros."""
 
@@ -102,6 +99,20 @@ class EimerClient:
         else:
             return "Fallback"
             # TODO
+
+    def register(self, force_register: bool = False) -> None:
+        """
+        Register the client to the server.
+        """
+
+        if self.socket is not None and not force_register:
+            log.warning("Client already registered.")
+            return
+
+        self.socket = self._register()
+
+        if self.socket is None:
+            raise RuntimeError("Failed to register client.")
 
     def _register(self) -> socket.SocketIO:
         """
