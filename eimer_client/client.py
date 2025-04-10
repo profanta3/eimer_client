@@ -1,5 +1,4 @@
 import socket
-from abc import ABC
 from pathlib import Path
 
 from eimer_client.api import MoveCode
@@ -9,18 +8,13 @@ from eimer_client.move import Move
 from eimer_client.utils import encode_image
 
 
-class BaseClient(ABC):
-    """
-    Base class for all clients.
-    """
+class BaseClient:
 
     def __init__(
         self,
         team_name: str,
         image_path: str,
         config: ClientConfig | None = None,
-        *args,
-        **kwargs,
     ):
         """
         Initialize the client.
@@ -114,7 +108,7 @@ class BaseClient(ABC):
         Register the client to the server and return the socket connection.
         """
 
-        log.info(f"Registering to client {self.team_name} with logo {self.image_path}")
+        log.info("Registering to server ...")
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.config.host, self.config.port))
